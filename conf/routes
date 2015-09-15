@@ -5,7 +5,6 @@
 module:testrunner
 
 # Home is My Blog
-Get 	/											Index.Default
 GET     /note   	                                Note.Index
 # leanote home
 GET     /index   	                                Index.Index
@@ -43,43 +42,43 @@ GET     /note/:noteId   	                        Note.Index
 
 # blog
 
-GET		/blog/getLikesAndComments			Blog.GetLikesAndComments
-GET		/blog/getLikes						Blog.GetLikes
-*		/blog/incReadNum					Blog.IncReadNum
-*		/blog/likePost					Blog.LikePost
-*		/blog/likeComment				Blog.LikeComment
-*		/blog/deleteComment				Blog.DeleteComment
-GET		/blog/getComments					Blog.GetComments
-*		/blog/commentPost					Blog.CommentPost
-GET		/blog/getPostStat					Blog.GetPostStat
+GET		/getLikesAndComments			Blog.GetLikesAndComments
+GET		/getLikes						Blog.GetLikes
+*		/incReadNum					Blog.IncReadNum
+*		/likePost					Blog.LikePost
+*		/likeComment				Blog.LikeComment
+*		/deleteComment				Blog.DeleteComment
+GET		/getComments					Blog.GetComments
+*		/commentPost					Blog.CommentPost
+GET		/getPostStat					Blog.GetPostStat
 
 
-GET		/blog/tags/:userIdOrEmail	Blog.Tags
-GET		/blog/tags	Blog.Tags
 
-GET		/blog/tag/:userIdOrEmail/:tag	Blog.Tag
-GET		/blog/tag/:tag	Blog.Tag
+GET		/tags	Blog.Tags
 
-GET		/blog/search/:userIdOrEmail	Blog.Search
-GET		/blog/search	Blog.Search
+GET		/tag/:userIdOrEmail/:tag	Blog.Tag
+GET		/tag/:tag	Blog.Tag
 
-GET		/blog/archives/:userIdOrEmail	Blog.Archives
-GET		/blog/archives	Blog.Archives
+GET		/search/:userIdOrEmail	Blog.Search
+GET		/search	Blog.Search
 
-GET		/blog/post/:noteId			Blog.Post
-GET		/blog/post/:userIdOrEmail/:noteId			Blog.Post
-GET		/blog/view/:noteId			Blog.Post
 
-GET		/blog/single/:userIdOrEmail/:singleId			Blog.Single
-GET		/blog/single/:singleId			Blog.Single
+GET		/archives	Blog.Archives
 
-GET		/blog/cate/:notebookId		Blog.Cate
-GET		/blog/cate/:userIdOrEmail/:notebookId		Blog.Cate
+GET		/p/:noteId			Blog.Post
+GET		/p/:userIdOrEmail/:noteId			Blog.Post
 
-GET		/blog/listCateLatest/:notebookId	Blog.ListCateLatest
-GET		/blog/:userIdOrEmail		Blog.Index
-GET		/blog						Blog.Index
-GET		/blog/*						Blog.E()
+
+GET		/single/:userIdOrEmail/:singleId			Blog.Single
+GET		/single/:singleId			Blog.Single
+
+GET		/cate/:notebookId		Blog.Cate
+GET		/cate/:userIdOrEmail/:notebookId		Blog.Cate
+
+GET		/listCateLatest/:notebookId	Blog.ListCateLatest
+GET		/users/:userIdOrEmail		Blog.Index
+GET		/						Blog.Index
+#GET		/*						Blog.E()
 
 #---------------
 # preview

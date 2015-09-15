@@ -1,7 +1,7 @@
 {{range $.posts}}
 	<div class="each-post">
 		<div class="title">
-			<a href="{{$.postUrl}}/{{.UrlTitle}}" title="{{.Title}}">
+			<a href="p/{{.NoteId}}" title="{{.Title}}">
 			    {{if .Title}}
 			        {{.Title}}
 			    {{else}}
@@ -27,7 +27,7 @@
 			{{.Abstract | raw}}
 		</div>
 		<div id="moreContainer">
-		    <a class="more" href="{{$.postUrl}}/{{.UrlTitle}}" title="{{.Title}}">More</a>
+		    <a class="more" href="p/{{.NoteId}}" title="{{.Title}}">More</a>
         </div>	
 	</div>
 {{else}}

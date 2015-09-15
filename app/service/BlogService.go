@@ -751,7 +751,7 @@ func (this *BlogService) sendEmail(note info.Note, comment info.BlogComment, use
 		}
 
 		body := "{header}<b>评论内容</b>: <br /><blockquote>" + content + "</blockquote>";
-		href := "http://"+ configService.GetBlogDomain() + "/view/" + note.NoteId.Hex()
+		href := "http://"+ configService.GetBlogDomain() + "/p/" + note.NoteId.Hex()
 		body += "<br /><b>博客链接</b>: <a href='" + href + "'>" + href + "</a>{footer}";
 
 		emailService.SendEmail(toUserInfo.Email, subject, body)
@@ -1117,7 +1117,7 @@ func (this *BlogService) GetBlogUrls(userBlog *info.UserBlog, userInfo *info.Use
 	var indexUrl, postUrl, searchUrl, cateUrl, singleUrl, tagsUrl, archiveUrl, tagPostsUrl string
 	if userBlog.Domain != "" && configService.AllowCustomDomain() { // http://demo.com
 		// ok
-		indexUrl = configService.GetUserUrl(userBlog.Domain)
+		indexUrl = configService.GetBlogDomain()
 		cateUrl = indexUrl + "/cate"     // /xxxxx
 		postUrl = indexUrl + "/post"     // /xxxxx
 		searchUrl = indexUrl + "/search" // /xxxxx
@@ -1137,22 +1137,14 @@ func (this *BlogService) GetBlogUrls(userBlog *info.UserBlog, userInfo *info.Use
 	} else {
 		// ok
 		blogUrl := configService.GetBlogUrl() // blog.leanote.com
-		userIdOrEmail := ""
-		if userInfo.Username != "" {
-			userIdOrEmail = userInfo.Username
-		} else if userInfo.Email != "" {
-			userIdOrEmail = userInfo.Email
-		} else {
-			userIdOrEmail = userInfo.UserId.Hex()
-		}
-		indexUrl = blogUrl + "/" + userIdOrEmail
-		cateUrl = blogUrl + "/cate/" + userIdOrEmail        // /username/notebookId
-		postUrl = blogUrl + "/post/" + userIdOrEmail        // /username/xxxxx
-		searchUrl = blogUrl + "/search/" + userIdOrEmail    // blog.leanote.com/search/username
-		singleUrl = blogUrl + "/single/" + userIdOrEmail    // blog.leanote.com/single/username/singleId
-		archiveUrl = blogUrl + "/archives/" + userIdOrEmail // blog.leanote.com/archive/username
-		tagsUrl = blogUrl + "/tags/" + userIdOrEmail
-		tagPostsUrl = blogUrl + "/tag/" + userIdOrEmail // blog.leanote.com/archive/username
+		indexUrl = blogUrl + "/"
+		cateUrl = blogUrl + "/cate/"     
+		postUrl = blogUrl + "/post/"       
+		searchUrl = blogUrl + "/search/"  
+		singleUrl = blogUrl + "/single/"  
+		archiveUrl = blogUrl + "/archives/" 
+		tagsUrl = blogUrl + "/tags/"
+		tagPostsUrl = blogUrl + "/tag/" 
 	}
 
 	return info.BlogUrls{

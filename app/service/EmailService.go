@@ -229,7 +229,7 @@ func (this *EmailService) SendCommentEmail(note info.Note, comment info.BlogComm
 		"blog": map[string]string{
 			"id": note.NoteId.Hex(),
 			"title": note.Title,
-			"url": configService.GetBlogUrl() + "/view/" + note.NoteId.Hex(),
+			"url": configService.GetBlogUrl() + "/p/" + note.NoteId.Hex(),
 		},
 		"commentContent": content,
 		// 评论者信息

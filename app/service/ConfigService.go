@@ -515,7 +515,7 @@ func (this *ConfigService) GetBlogDomain() string {
 	if subDomain != "" {
 		return subDomain + port
 	}
-	return this.GetDefaultDomain() + "/blog"
+	return this.GetDefaultDomain()
 }
 func (this *ConfigService) GetBlogUrl() string {
 	return schema + this.GetBlogDomain();

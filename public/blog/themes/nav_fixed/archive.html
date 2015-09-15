@@ -17,7 +17,7 @@
         		          <ul>
         		                {{range .Posts}}
         		                <li>
-        		                    {{dateFormat .PublicTime "2006-01-02"}} <a href="{{$.postUrl}}/{{.UrlTitle}}">
+        		                    {{dateFormat .PublicTime "2006-01-02"}} <a href="../p/{{.NoteId}}">
         		                    
         		                    {{if .Title}}
         		                        {{.Title}}
