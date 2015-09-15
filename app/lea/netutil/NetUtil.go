@@ -6,7 +6,7 @@ import (
 	"net"
 	"net/http"
 	"io/ioutil"
-	. "github.com/leanote/leanote/app/lea"
+	. "github.com/duoyun/zhujian/app/lea"
 )
 
 // net的util

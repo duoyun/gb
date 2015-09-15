@@ -2,8 +2,8 @@ package admin
 
 import (
 	"github.com/revel/revel"
-	. "github.com/leanote/leanote/app/lea"
-	"github.com/leanote/leanote/app/info"
+	. "github.com/duoyun/zhujian/app/lea"
+	"github.com/duoyun/zhujian/app/info"
 	 "archive/tar"
     "compress/gzip"	
     "os"

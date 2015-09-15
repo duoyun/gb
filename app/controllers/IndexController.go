@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"github.com/revel/revel"
-	"github.com/leanote/leanote/app/info"
-//	. "github.com/leanote/leanote/app/lea"
+	"github.com/duoyun/zhujian/app/info"
+//	. "github.com/duoyun/zhujian/app/lea"
 )
 
 // 首页

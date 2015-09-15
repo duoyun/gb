@@ -1,9 +1,9 @@
 package service
 
 import (
-	"github.com/leanote/leanote/app/info"
-	. "github.com/leanote/leanote/app/lea"
-	"github.com/leanote/leanote/app/db"
+	"github.com/duoyun/zhujian/app/info"
+	. "github.com/duoyun/zhujian/app/lea"
+	"github.com/duoyun/zhujian/app/db"
 	"gopkg.in/mgo.v2/bson"
 	"github.com/revel/revel"
 	"time"
@@ -352,7 +352,7 @@ func (this *ConfigService) Restore(createdTime string) (ok bool, msg string) {
 		return
 	}
 	
-	// mongorestore -h localhost -d leanote --directoryperdb /home/user1/gopackage/src/github.com/leanote/leanote/mongodb_backup/leanote_install_data/
+	// mongorestore -h localhost -d leanote --directoryperdb /home/user1/gopackage/src/github.com/duoyun/zhujian/mongodb_backup/leanote_install_data/
 	binPath := configService.GetGlobalStringConfig("mongorestorePath")
 	config := revel.Config;
 	dbname, _ := config.String("db.dbname")

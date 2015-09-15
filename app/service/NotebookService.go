@@ -3,9 +3,9 @@ package service
 import (
 //	"fmt"
 	"gopkg.in/mgo.v2/bson"
-	"github.com/leanote/leanote/app/db"
-	"github.com/leanote/leanote/app/info"
-	. "github.com/leanote/leanote/app/lea"
+	"github.com/duoyun/zhujian/app/db"
+	"github.com/duoyun/zhujian/app/info"
+	. "github.com/duoyun/zhujian/app/lea"
 	"sort"
 	"time"
 	"strings"

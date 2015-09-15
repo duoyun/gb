@@ -1,10 +1,10 @@
 package controllers
 
 import (
-	"github.com/leanote/leanote/app/service"
-	"github.com/leanote/leanote/app/info"
-	"github.com/leanote/leanote/app/lea/blog"
-//	. "github.com/leanote/leanote/app/lea"
+	"github.com/duoyun/zhujian/app/service"
+	"github.com/duoyun/zhujian/app/info"
+	"github.com/duoyun/zhujian/app/lea/blog"
+//	. "github.com/duoyun/zhujian/app/lea"
 	"github.com/revel/revel"
 	"strings"
 )

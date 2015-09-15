@@ -2,8 +2,8 @@ package route
 
 import (
 	"github.com/revel/revel"
-//	"github.com/leanote/leanote/app/service"
-//	. "github.com/leanote/leanote/app/lea"
+//	"github.com/duoyun/zhujian/app/service"
+//	. "github.com/duoyun/zhujian/app/lea"
 	"net/url"
 	"strings"
 )

@@ -2,7 +2,7 @@ package session
 
 import (
 	"github.com/revel/revel"
-//	. "github.com/leanote/leanote/app/lea"
+//	. "github.com/duoyun/zhujian/app/lea"
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"

@@ -2,7 +2,7 @@ package member
 
 import (
 	"github.com/revel/revel"
-	"github.com/leanote/leanote/app/info"
+	"github.com/duoyun/zhujian/app/info"
 )
 
 // 分组管理

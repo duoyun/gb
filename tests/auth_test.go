@@ -2,9 +2,9 @@ package tests
 
 import (
 	"testing"
-	"github.com/leanote/leanote/app/db"
-//	. "github.com/leanote/leanote/app/lea"
-	"github.com/leanote/leanote/app/service"
+	"github.com/duoyun/zhujian/app/db"
+//	. "github.com/duoyun/zhujian/app/lea"
+	"github.com/duoyun/zhujian/app/service"
 //	"gopkg.in/mgo.v2"
 //	"fmt"
 )

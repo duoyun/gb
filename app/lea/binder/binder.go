@@ -2,9 +2,9 @@ package binder
 
 import (
 	"github.com/revel/revel"
-	"github.com/leanote/leanote/app/info"
-	"github.com/leanote/leanote/app/controllers"
-//	"github.com/leanote/leanote/app/controllers/api"
+	"github.com/duoyun/zhujian/app/info"
+	"github.com/duoyun/zhujian/app/controllers"
+//	"github.com/duoyun/zhujian/app/controllers/api"
 	"fmt"
 	"reflect"
 	"strings"

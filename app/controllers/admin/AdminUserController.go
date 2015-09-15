@@ -2,9 +2,9 @@ package admin
 
 import (
 	"github.com/revel/revel"
-	. "github.com/leanote/leanote/app/lea"
+	. "github.com/duoyun/zhujian/app/lea"
 //	"time"
-	"github.com/leanote/leanote/app/info"
+	"github.com/duoyun/zhujian/app/info"
 )
 
 // admin 首页
