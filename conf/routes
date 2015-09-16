@@ -54,29 +54,33 @@ GET		/getPostStat					Blog.GetPostStat
 
 
 
-GET		/tags	Blog.Tags
 
-GET		/tag/:userIdOrEmail/:tag	Blog.Tag
-GET		/tag/:tag	Blog.Tag
+
+
 
 GET		/search/:userIdOrEmail	Blog.Search
 GET		/search	Blog.Search
 
 
-GET		/archives	Blog.Archives
+GET		/users/:userIdOrEmail/archives	Blog.Archives
+GET		/users/:userIdOrEmail		Blog.Index
+GET		/users/:userIdOrEmail/tags	Blog.Tags
+GET		/users/:userIdOrEmail/tag/:tag	Blog.Tag
+GET		/users/:userIdOrEmail/single/:singleId			Blog.Single
 
 GET		/p/:noteId			Blog.Post
 GET		/p/:userIdOrEmail/:noteId			Blog.Post
+GET		/blog/view/:noteId			Blog.Post
 
 
-GET		/single/:userIdOrEmail/:singleId			Blog.Single
-GET		/single/:singleId			Blog.Single
+
+
 
 GET		/cate/:notebookId		Blog.Cate
 GET		/cate/:userIdOrEmail/:notebookId		Blog.Cate
 
 GET		/listCateLatest/:notebookId	Blog.ListCateLatest
-GET		/users/:userIdOrEmail		Blog.Index
+
 GET		/						Blog.Index
 #GET		/*						Blog.E()
 

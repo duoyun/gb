@@ -1137,14 +1137,22 @@ func (this *BlogService) GetBlogUrls(userBlog *info.UserBlog, userInfo *info.Use
 	} else {
 		// ok
 		blogUrl := configService.GetBlogUrl() // blog.leanote.com
-		indexUrl = blogUrl + "/"
+		userIdOrEmail := ""
+		if userInfo.Username != "" {
+			userIdOrEmail = userInfo.Username
+		} else if userInfo.Email != "" {
+			userIdOrEmail = userInfo.Email
+		} else {
+			userIdOrEmail = userInfo.UserId.Hex()
+		}
+		indexUrl = blogUrl + "/users/" + userIdOrEmail
 		cateUrl = blogUrl + "/cate/"     
 		postUrl = blogUrl + "/post/"       
 		searchUrl = blogUrl + "/search/"  
-		singleUrl = blogUrl + "/single/"  
-		archiveUrl = blogUrl + "/archives/" 
-		tagsUrl = blogUrl + "/tags/"
-		tagPostsUrl = blogUrl + "/tag/" 
+		singleUrl = blogUrl + "/users/" + userIdOrEmail + "/single"  
+		archiveUrl = blogUrl + "/users/" + userIdOrEmail + "/archives/" 
+		tagsUrl = blogUrl + "/users/" + userIdOrEmail + "/tags/"
+		tagPostsUrl = blogUrl + "/users/" + userIdOrEmail +"/tag" 
 	}
 
 	return info.BlogUrls{
