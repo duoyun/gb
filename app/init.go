@@ -10,8 +10,6 @@ import (
 	"github.com/duoyun/zhujian/app/controllers/admin"
 	"github.com/duoyun/zhujian/app/controllers/member"
 	_ "github.com/duoyun/zhujian/app/lea/binder"
-//	"github.com/duoyun/zhujian/app/lea/session"
-//	"github.com/duoyun/zhujian/app/lea/memcache"
 	"github.com/duoyun/zhujian/app/lea/route"
 	"reflect"
 	"fmt"
