@@ -606,6 +606,38 @@ func (c Blog) Index(userIdOrEmail string) (re revel.Result) {
 	return c.render("index.html", userBlog.ThemePath)
 }
 
+func (c Blog) UserIndex(userIdOrEmail string) (re revel.Result) {
+	// 自定义域名
+	hasDomain, userBlog := c.domain()
+	defer func() {
+		if err := recover(); err != nil {
+			re = c.e404(userBlog.ThemePath)
+		}
+	}()
+	// 用户id为空, 则是admin用户的博客
+	if userIdOrEmail == "" {
+		userIdOrEmail = configService.GetAdminUsername()
+	}
+	userId, userInfo := c.userIdOrEmail(hasDomain, userBlog, userIdOrEmail)
+	var ok = false
+	if ok, userBlog = c.blogCommon(userId, userBlog, userInfo); !ok {
+		return c.e404(userBlog.ThemePath) // 404 TODO 使用用户的404
+	}
+
+	// 分页的话, 需要分页信息, totalPage, curPage
+	page := c.GetPage()
+	pageInfo, blogs := blogService.ListBlogs(userId, "", page, userBlog.PerPageSize, userBlog.SortField, userBlog.IsAsc)
+	blogs2 := blogService.FixBlogs(blogs)
+	c.RenderArgs["posts"] = blogs2
+
+	c.setPaging(pageInfo)
+	c.RenderArgs["pagingBaseUrl"] = c.RenderArgs["indexUrl"]
+
+	c.RenderArgs["curIsIndex"] = true
+
+	return c.render("userindex.html", userBlog.ThemePath)
+}
+
 func (c Blog) Post(userIdOrEmail, noteId string) (re revel.Result) {
 	// 自定义域名
 	hasDomain, userBlog := c.domain()

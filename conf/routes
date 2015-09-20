@@ -63,7 +63,7 @@ GET		/search	Blog.Search
 
 
 GET		/users/:userIdOrEmail/archives	Blog.Archives
-GET		/users/:userIdOrEmail		Blog.Index
+GET		/users/:userIdOrEmail		Blog.UserIndex
 GET		/users/:userIdOrEmail/tags	Blog.Tags
 GET		/users/:userIdOrEmail/tag/:tag	Blog.Tag
 GET		/users/:userIdOrEmail/single/:singleId			Blog.Single
