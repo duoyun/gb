@@ -352,46 +352,7 @@ function setEditorContent(content, isMarkdown, preview, callback) {
 	if(clearIntervalForSetContent) {
 		clearInterval(clearIntervalForSetContent);
 	}
-	if(!isMarkdown) {
-		// 先destroy之前的ace
-		/*
-		if(typeof tinymce != "undefined" && tinymce.activeEditor) {
-			var editor = tinymce.activeEditor;
-			var everContent = $(editor.getBody());
-			if(everContent) {
-				LeaAce.destroyAceFromContent(everContent);
-			}
-		}
-		*/
-
-		$("#editorContent").html(content);
-		if(typeof tinymce != "undefined" && tinymce.activeEditor) {
-			var editor = tinymce.activeEditor;
-			// console.log('set content');
-			LEA.s4 = new Date();
-			LEA.s4_1 = LEA.s4.getTime()-LEA.s1.getTime();
-			editor.setContent(content);
-			callback && callback();
-			/*
-			if(LeaAce.canAce() && LeaAce.isAce) {
-				try {
-					LeaAce.initAceFromContent(editor);
-				} catch(e) {
-					log(e);
-				}
-			} else {
-				// 为了在firefox下有正常的显示
-				$("#editorContent pre").removeClass("ace-tomorrow ace_editor");
-			}
-			*/
-			editor.undoManager.clear(); // 4-7修复BUG
-		} else {
-			// 等下再设置
-			clearIntervalForSetContent = setTimeout(function() {
-				setEditorContent(content, false, false, callback);
-			}, 100);
-		}
-	} else {
+	if(isMarkdown) {
 	/*
 		$("#wmd-input").val(content);
 		$("#wmd-preview").html(""); // 防止先点有的, 再点tinymce再点没内容的
@@ -444,68 +405,7 @@ function isAceError(val) {
 
 // 有tinymce得到的content有<html>包围
 function getEditorContent(isMarkdown) {
-	if(!isMarkdown) {
-		var editor = tinymce.activeEditor;
-		if(editor) {
-			var content = $(editor.getBody()).clone();
-			// 删除toggle raw 
-			content.find('.toggle-raw').remove();
-
-			// single页面没有LeaAce
-			if(window.LeaAce && LeaAce.getAce) {
-				// 替换掉ace editor
-				var pres = content.find('pre');
-				for(var i = 0 ; i < pres.length; ++i) {
-					var pre = pres.eq(i);
-					var id = pre.attr('id');
-					var aceEditor = LeaAce.getAce(id);
-					if(aceEditor) {
-						var val = aceEditor.getValue();
-						// 表示有错
-						if(isAceError(val)) {
-							val = pre.html();
-						}
-						val = val.replace(/</g, '&lt').replace(/>/g, '&gt');
-						pre.removeAttr('style', '').removeAttr('contenteditable').removeClass('ace_editor');
-						pre.html(val);
-					}
-				}
-			}
-			
-			// 去掉恶心的花瓣注入
-			// <pinit></pinit>
-			// 把最后的<script>..</script>全去掉
-			content.find("pinit").remove();
-			content.find(".thunderpin").remove();
-			content.find(".pin").parent().remove();
-			content = $(content).html();
-			if(content) {
-				while(true) {
-					var lastEndScriptPos = content.lastIndexOf("</script>");
-					if (lastEndScriptPos == -1) {
-						return content;
-					}
-					var length = content.length;
-					// 证明</script>在最后, 去除之
-					if(length - 9 == lastEndScriptPos) {
-						var lastScriptPos = content.lastIndexOf("<script ");
-						if(lastScriptPos == -1) {
-							lastScriptPos = content.lastIndexOf("<script>");
-						}
-						if(lastScriptPos != -1) {
-							content = content.substring(0, lastScriptPos);
-						} else {
-							return content;
-						}
-					} else {
-						// 不在最后, 返回
-						return content;
-					}
-				}
-			}
-			return content;
-		}
-	} else {
+	if(isMarkdown) {
 		// return [$("#wmd-input").val(), $("#wmd-preview").html()]
 		return [MD.getContent(), '<div>' + $("#preview-contents").html() + '</div>']
 	}

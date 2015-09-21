@@ -1408,9 +1408,6 @@ Note.toggleReadOnly = function() {
 	var me = this;
 	var note = me.getCurNote();
 
-	// tinymce
-	var $editor = $('#editor');
-	$editor.addClass('read-only').removeClass('all-tool'); // 不要全部的
 
 	// 不可写
 	$('#editorContent').attr('contenteditable', false);
@@ -1663,10 +1660,7 @@ var Attach = {
 			var src = UrlPrefix + "/attach/download?attachId=" + attachId;
 			if(LEA.isMarkdownEditor() && MD) {
 				MD.insertLink(src, attach.Title);
-			} else {
-				// tinymce.activeEditor.selection.moveToBookmark(self._bookmark);
-				tinymce.activeEditor.insertContent('<a target="_blank" href="' + src + '">' + attach.Title + '</a>');
-			}
+			} 
 		});
 		
 		// make all link
@@ -1681,8 +1675,6 @@ var Attach = {
 			
 			if(LEA.isMarkdownEditor() && MD) {
 				MD.insertLink(src, title);
-			} else {
-				tinymce.activeEditor.insertContent('<a target="_blank" href="' + src + '">' + title + '</a>');
 			}
 		});
 	},
@@ -1917,7 +1909,7 @@ $(function() {
 		e.stopPropagation();
 		// 得到ID
 		var noteId = $(this).parent().attr('noteId');
-		window.open("/blog/view/" + noteId);
+		window.open("/p/" + noteId);
 	});
 	
 	// note setting
