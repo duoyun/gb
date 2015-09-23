@@ -206,7 +206,7 @@ Note.curHasChanged = function(force) {
 	var tags = Tag.getTags(); // TODO
 	
 	// 如果是markdown返回[content, preview]
-	var contents = getEditorContent(cacheNote.IsMarkdown);
+	var contents = getEditorContent();
 	var content, preview;
 	var contentText;
 	if (isArray(contents)) {
@@ -232,7 +232,6 @@ Note.curHasChanged = function(force) {
 	var hasChanged = {
 		hasChanged: false, // 总的是否有改变
 		IsNew: cacheNote.IsNew, // 是否是新添加的
-		IsMarkdown: cacheNote.IsMarkdown, // 是否是markdown笔记
 		FromUserId: cacheNote.FromUserId, // 是否是共享新建的
 		NoteId: cacheNote.NoteId,
 		NotebookId: cacheNote.NotebookId,
@@ -263,7 +262,7 @@ Note.curHasChanged = function(force) {
 	}
 	
 	// 比较text, 因为note Nav会添加dom会导致content改变
-	if((force && cacheNote.Content != content) || (!force && (/**/(!cacheNote.IsMarkdown && $(cacheNote.Content).text() != contentText) || (cacheNote.IsMarkdown && cacheNote.Content != contentText)) /**/) ) {
+	if((force && cacheNote.Content != content) || (!force && (/**/( $(cacheNote.Content).text() != contentText) || (cacheNote.Content != contentText)) /**/) ) {
 		hasChanged.hasChanged = true;
 		hasChanged.Content = content;
 		
@@ -619,7 +618,7 @@ Note.changeNote = function(selectNoteId, isShare, needSaveChanged, callback) {
 	}
 	
 	// 这里要切换编辑器
-	switchEditor(cacheNote.IsMarkdown)
+	switchEditor()
 	
 	Attach.renderNoteAttachNum(selectNoteId, true);
 	
@@ -749,7 +748,7 @@ Note.renderNote = function(note) {
 
 // render content
 Note.renderNoteContent = function(content) {
-	setEditorContent(content.Content, content.IsMarkdown, content.Preview, function() {
+	setEditorContent(content.Content, content.Preview, function() {
 		Note.curNoteId = content.NoteId;
 		Note.toggleReadOnly();
 	});
@@ -896,10 +895,9 @@ Note._renderNotes = function(notes, forNewNote, isShared, tang) { // 第几趟
 // 新建一个笔记
 // 要切换到当前的notebook下去新建笔记
 // isShare时fromUserId才有用
-// 3.8 add isMarkdown
-Note.newNote = function(notebookId, isShare, fromUserId, isMarkdown) {
+Note.newNote = function(notebookId, isShare, fromUserId) {
 	// 切换编辑器
-	switchEditor(isMarkdown);
+	switchEditor();
 	Note.hideEditorMask();
 	
 	// 防止从共享read only跳到添加
@@ -909,7 +907,7 @@ Note.newNote = function(notebookId, isShare, fromUserId, isMarkdown) {
 	// 保存当前的笔记
 	Note.curChangedSaveIt();
 	
-	var note = {NoteId: getObjectId(), Title: "", Tags:[], Content:"", NotebookId: notebookId, IsNew: true, FromUserId: fromUserId, IsMarkdown: isMarkdown}; // 是新的
+	var note = {NoteId: getObjectId(), Title: "", Tags:[], Content:"", NotebookId: notebookId, IsNew: true, FromUserId: fromUserId}; // 是新的
 	// 添加到缓存中
 	Note.addNoteCache(note);
 	
@@ -1093,10 +1091,7 @@ Note.listNoteContentHistories = function() {
 		// 组装成一个tab
 		var str = "<p>" + getMsg("historiesNum") + '</p><div id="historyList"><table class="table table-hover">';
 		note = Note.cache[Note.curNoteId];
-		var s = "div"
-		if(note.IsMarkdown) {
-			s = "pre";
-		}
+		var s = "pre"
 		for (i in re) {
 			var content = re[i]
 			content.Ab = Note.genAbstract(content.Content, 200);
@@ -1130,7 +1125,7 @@ Note.listNoteContentHistories = function() {
 				Note.curChangedSaveIt();
 				// 设置之
 				note = Note.cache[Note.curNoteId];
-				setEditorContent(re[seq].Content, note.IsMarkdown);
+				setEditorContent(re[seq].Content);
 				//
 				hideDialog();
 			}
@@ -1420,24 +1415,11 @@ Note.toggleReadOnly = function() {
 	}
 	
 	$('.info-toolbar').removeClass('invisible');
-	if(note.IsMarkdown) {
-		$('#mdInfoToolbar .created-time').html(goNowToDatetime(note.CreatedTime));
-		$('#mdInfoToolbar .updated-time').html(goNowToDatetime(note.UpdatedTime));
-	}
-	else {
-		$('#infoToolbar .created-time').html(goNowToDatetime(note.CreatedTime));
-		$('#infoToolbar .updated-time').html(goNowToDatetime(note.UpdatedTime));
-	}
-	
+	$('#mdInfoToolbar .created-time').html(goNowToDatetime(note.CreatedTime));
+	$('#mdInfoToolbar .updated-time').html(goNowToDatetime(note.UpdatedTime));
+
 	if(note.readOnly) {
 		return;
-	}
-
-	if(!note.IsMarkdown) {
-		// 里面的pre也设为不可写
-		$('#editorContent pre').each(function() {
-			LeaAce.setAceReadOnly($(this), true);
-		});
 	}
 
 	note.readOnly = true;
@@ -1463,18 +1445,8 @@ Note.toggleWriteable = function() {
 		return;
 	}
 
-	if(!note.IsMarkdown) {
-		// 里面的pre也设为不可写
-		$('#editorContent pre').each(function() {
-			LeaAce.setAceReadOnly($(this), false);
-		});
-	}
-	else {
-		if(MD) {
-			MD.onResize();
-		}
-	}
-
+	MD.onResize();
+	
 	note.readOnly = false;
 	Note.readOnly = false;
 };
@@ -1658,7 +1630,7 @@ var Attach = {
 			var attachId = $(this).closest('li').data("id");
 			var attach = self.attachsMap[attachId];
 			var src = UrlPrefix + "/attach/download?attachId=" + attachId;
-			if(LEA.isMarkdownEditor() && MD) {
+			if(MD) {
 				MD.insertLink(src, attach.Title);
 			} 
 		});
@@ -1673,7 +1645,7 @@ var Attach = {
 			var src = UrlPrefix +  "/attach/downloadAll?noteId=" + Note.curNoteId
 			var title = note.Title ? note.Title + ".tar.gz" : "all.tar.gz";
 			
-			if(LEA.isMarkdownEditor() && MD) {
+			if(MD) {
 				MD.insertLink(src, title);
 			}
 		});
@@ -1852,12 +1824,12 @@ $(function() {
 	});
 	$("#newNoteMarkdownBtn, #editorMask .markdown").click(function() {
 		var notebookId = $("#curNotebookForNewNote").attr('notebookId');
-		Note.newNote(notebookId, false, "", true);
+		Note.newNote(notebookId, false, "");
 	});
 	$("#notebookNavForNewNote").on("click", "li div", function() {
 		var notebookId = $(this).attr("notebookId");
 		if($(this).hasClass("new-note-right")) {
-			Note.newNote(notebookId, false, "", true);
+			Note.newNote(notebookId, false, "");
 		} else {
 			Note.newNote(notebookId);
 		}

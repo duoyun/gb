@@ -36,7 +36,6 @@ type Post struct {
 	CommentNum int
 	ReadNum int
 	LikeNum int
-	IsMarkdown bool
 }
 // 归档
 type ArchiveMonth struct {

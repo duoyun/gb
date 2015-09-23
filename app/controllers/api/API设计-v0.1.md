@@ -33,7 +33,6 @@ By life (life@leanote.com)
   "Tags": null,
   "Abstract": "",
   "Content": "",
-  "IsMarkdown": false,
   "IsBlog": false,
   "IsTrash": true,
   "IsDeleted": false,

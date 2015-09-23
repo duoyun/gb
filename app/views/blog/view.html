@@ -34,7 +34,6 @@
 			</div>
 			
 			<div class="desc" id="content">
-				{{if .blog.IsMarkdown }}
 					<div id="markdownContent" style="display: none">
 						<!-- 用textarea装html, 防止得到的值失真 -->
 						<textarea>
@@ -44,9 +43,6 @@
 					<div style="padding: 20px; text-align: center">
 						<img src="/images/loading-32.gif" />
 					</div>
-				{{else}}
-						{{.blog.Content | raw}}
-				{{end}}
 				
 				<div id="desc" class="hide">{{.blog.Desc}}</div>
 			</div>
@@ -81,7 +77,7 @@ var commentNum = +"{{.blog.CommentNum}}";
 <script src="/js/jquery.qrcode.min.js"></script>
 <script src="/js/app/blog/view.js"></script>
 
-{{if .blog.IsMarkdown }}
+<!--markdown-->
 <script src="/public/mdeditor/editor/pagedown/Markdown.Converter.js"></script>
 <script src="/public/mdeditor/editor/pagedown/Markdown.Sanitizer.js"></script>
 <script src="/public/mdeditor/editor/pagedown/Markdown.Editor.js"></script>
@@ -109,14 +105,7 @@ MathJax.Hub.Queue(["Typeset",MathJax.Hub,"wmd-preview"]);
 initNav();
 weixin();
 </script>
-{{else}}
-<script>
-$(function() {
-	initNav();
-	weixin();
-});
-</script>
-{{end}}
+
 
 <!--google+
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"> {lang: 'zh-CN'} </script>

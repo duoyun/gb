@@ -26,7 +26,6 @@ type ApiNote struct {
 	Tags       []string
 	Abstract   string
 	Content    string
-	IsMarkdown bool
 //	FromUserId string // 为共享而新建
 	IsBlog     bool   // 是否是blog, 更新note不需要修改, 添加note时才有可能用到, 此时需要判断notebook是否设为Blog
 	IsTrash bool

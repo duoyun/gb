@@ -43,8 +43,7 @@
 			{{end}}
 			</div>
 			
-			<div class="desc {{if $.post.IsMarkdown }}markdown-content{{end}}" id="content">
-				{{if $.post.IsMarkdown }}
+			<div class="desc markdown-content" id="content">
 					<div id="markdownContent" style="display: none">
 						<!-- 用textarea装html, 防止得到的值失真 -->
 						<textarea>{{$.post.Content | raw}}</textarea>
@@ -52,9 +51,6 @@
 					<div style="padding: 20px; text-align: center">
 						<img src="{{$.themeBaseUrl}}/images/loading-32.gif" />
 					</div>
-				{{else}}
-						{{$.post.Content | raw}}
-				{{end}}
 			</div>
 			
 		    <div class="pre-next-post">
@@ -108,7 +104,7 @@ var commentNum = +"{{$.post.CommentNum}}";
 <!-- 
 markdown 
 调用markdown来解析得到html
--->{{if $.post.IsMarkdown }}
+-->
 <script src="/public/libs/md2html/md2html.js"></script>
 <script>
 var content = $.trim($("#markdownContent textarea").val());
@@ -119,15 +115,6 @@ md2Html(content, $("#content"), function(html) {
     weixin();
 });
 </script>
-<!-- 不是markdown -->
-{{else}}
-<script>
-$(function() {
-	initNav();
-	weixin();
-});
-</script>
-{{end}}
 
 </body>
 </html>

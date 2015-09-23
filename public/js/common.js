@@ -315,44 +315,24 @@ function editorIframeTabindex(index) {
 	// }
 }
 //切换编辑器
-LEA.isM = false;
-LEA.isMarkdownEditor = function() {
-	return LEA.isM;
+function switchEditor() {
+	$("#mdEditor").css("z-index", 3).show();		
+	editorIframeTabindex(3);
+	$("#wmd-input").attr("tabindex", 2);
+	$("#leanoteNav").hide();
 }
-function switchEditor(isMarkdown) {
-	LEA.isM = isMarkdown;
-	// 富文本永远是2
-	if(!isMarkdown) {
-		$("#editor").show();
-		$("#mdEditor").css("z-index", 1).hide();
-		
-		// 刚开始没有
-		editorIframeTabindex(2);
-		$("#wmd-input").attr("tabindex", 3);
-		$("#leanoteNav").show();
-	} else {
-		$("#mdEditor").css("z-index", 3).show();
-		
-		editorIframeTabindex(3);
-		$("#wmd-input").attr("tabindex", 2);
-		$("#leanoteNav").hide();
-	}
-}
-
-
 
 // editor 设置内容
-// 可能是tinymce还没有渲染成功
 var previewToken = "<div style='display: none'>FORTOKEN</div>"
 var clearIntervalForSetContent;
-function setEditorContent(content, isMarkdown, preview, callback) {
+function setEditorContent(content, preview, callback) {
 	if(!content) {
 		content = "";
 	}
 	if(clearIntervalForSetContent) {
 		clearInterval(clearIntervalForSetContent);
 	}
-	if(isMarkdown) {
+	
 	/*
 		$("#wmd-input").val(content);
 		$("#wmd-preview").html(""); // 防止先点有的, 再点tinymce再点没内容的
@@ -384,7 +364,7 @@ function setEditorContent(content, isMarkdown, preview, callback) {
 				setEditorContent(content, true, false, callback);
 			}, 100);
 		}
-	}
+
 }
 
 // preview是否为空
@@ -403,12 +383,9 @@ function isAceError(val) {
 	return val.indexOf('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX') != -1;
 }
 
-// 有tinymce得到的content有<html>包围
-function getEditorContent(isMarkdown) {
-	if(isMarkdown) {
+function getEditorContent() {
 		// return [$("#wmd-input").val(), $("#wmd-preview").html()]
 		return [MD.getContent(), '<div>' + $("#preview-contents").html() + '</div>']
-	}
 }
 
 // 禁用编辑

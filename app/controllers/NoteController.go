@@ -173,7 +173,6 @@ type NoteOrContent struct {
 	Content string
 	Abstract string
 	IsNew bool
-	IsMarkdown bool
 	FromUserId string // 为共享而新建
 	IsBlog bool // 是否是blog, 更新note不需要修改, 添加note时才有可能用到, 此时需要判断notebook是否设为Blog
 }
@@ -196,7 +195,6 @@ func (c Note) UpdateNoteOrContent(noteOrContent NoteOrContent) revel.Result {
 			Desc: noteOrContent.Desc,
 			ImgSrc: noteOrContent.ImgSrc,
 			IsBlog: noteOrContent.IsBlog,
-			IsMarkdown: noteOrContent.IsMarkdown,
 		};
 		noteContent := info.NoteContent{NoteId: note.NoteId, 
 			UserId: userId, 

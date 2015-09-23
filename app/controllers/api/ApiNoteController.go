@@ -35,7 +35,6 @@ type ApiNote struct {
     "Tags": null,
     "Abstract": "",
     "Content": "",
-    "IsMarkdown": true,
     "IsBlog": false,
     "IsTrash": false,
     "Usn": 5,
@@ -86,7 +85,6 @@ func (c ApiNote) GetTrashNotes() revel.Result {
   ],
   "Abstract": "",
   "Content": "",
-  "IsMarkdown": false,
   "IsBlog": false,
   "IsTrash": false,
   "Usn": 8,
@@ -325,7 +323,6 @@ func (c ApiNote) AddNote(noteOrContent info.ApiNote) revel.Result {
 		Desc:       noteOrContent.Desc,
 //		ImgSrc:     noteOrContent.ImgSrc,
 		IsBlog:     noteOrContent.IsBlog,
-		IsMarkdown: noteOrContent.IsMarkdown,
 		AttachNum:  attachNum,
 	}
 	noteContent := info.NoteContent{NoteId: note.NoteId,
@@ -355,7 +352,6 @@ func (c ApiNote) AddNote(noteOrContent info.ApiNote) revel.Result {
 	noteOrContent.CreatedTime = note.CreatedTime
 	noteOrContent.UpdatedTime = note.UpdatedTime
 	noteOrContent.UserId = c.getUserId()
-	noteOrContent.IsMarkdown = note.IsMarkdown
 	// 删除一些不要返回的, 删除Desc?
 	noteOrContent.Content = ""
 	noteOrContent.Abstract = ""

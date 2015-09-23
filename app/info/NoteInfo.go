@@ -31,8 +31,6 @@ type Note struct {
 	LikeNum    int `LikeNum,omitempty`    // 点赞次数 2014/9/28
 	CommentNum int `CommentNum,omitempty` // 评论次数 2014/9/28
 
-	IsMarkdown bool `IsMarkdown` // 是否是markdown笔记, 默认是false
-
 	AttachNum int `AttachNum` // 2014/9/21, attachments num
 	
 	CreatedTime   time.Time     `CreatedTime`

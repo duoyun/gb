@@ -1238,7 +1238,6 @@ func (this *BlogService) FixBlog(blog info.BlogItem) info.Post {
 		CommentNum:  blog.CommentNum,
 		ReadNum:     blog.ReadNum,
 		LikeNum:     blog.LikeNum,
-		IsMarkdown:  blog.IsMarkdown,
 	}
 	if blog2.Tags != nil && len(blog2.Tags) > 0 && blog2.Tags[0] != "" {
 	} else {
@@ -1268,6 +1267,5 @@ func (this *BlogService) FixNote(note info.Note) info.Post {
 		CommentNum:  note.CommentNum,
 		ReadNum:     note.ReadNum,
 		LikeNum:     note.LikeNum,
-		IsMarkdown:  note.IsMarkdown,
 	}
 }

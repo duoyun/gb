@@ -37,7 +37,6 @@
   "Tags": null,
   "Abstract": "",
   "Content": "",
-  "IsMarkdown": false,
   "IsBlog": false,
   "IsTrash": true,
   "IsDeleted": false,
@@ -236,7 +235,6 @@ Method: GET
 	Tags []string 可选
 	Content string 必传
 	Abstract string 可选, 当是markdown笔记时必须传
-	IsMarkdown bool 可选
 	Files []type.NoteFiles 数组  可选
 Method: POST
 返回: 
@@ -283,7 +281,6 @@ http://leanote.com 不绝对, 因为用户可以自建服务, 所以在开发时
 	Tags []string 可选
 	Content string 可选
 	Abstract string 可选, 当是markdown笔记时必须传
-	IsMarkdown bool 可选	
 	IsTrash bool 是否是trash 可选
 	Files []type.NoteFiles 数组  可选
 Method: POST
@@ -405,7 +402,6 @@ Note {
 	Title      string
 	Tags       []string
 	Content    string
-	IsMarkdown bool
 	IsBlog     bool 
 	IsTrash bool
 	Files []NoteFile // 图片, 附件

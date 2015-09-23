@@ -89,7 +89,6 @@ func (this *NoteService) ToApiNote(note *info.Note, files []info.NoteFile) info.
 		UserId     : note.UserId.Hex(),
 		Title      : note.Title,
 		Tags       : note.Tags,
-		IsMarkdown : note.IsMarkdown,
 		IsBlog    : note.IsBlog,
 		IsTrash : note.IsTrash,
 		IsDeleted : note.IsDeleted,
