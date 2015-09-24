@@ -2,9 +2,9 @@ package binder
 
 import (
 	"github.com/revel/revel"
-	"github.com/duoyun/zhujian/app/info"
-	"github.com/duoyun/zhujian/app/controllers"
-//	"github.com/duoyun/zhujian/app/controllers/api"
+	"github.com/nosqldb/zhujian/app/info"
+	"github.com/nosqldb/zhujian/app/controllers"
+//	"github.com/nosqldb/zhujian/app/controllers/api"
 	"fmt"
 	"reflect"
 	"strings"

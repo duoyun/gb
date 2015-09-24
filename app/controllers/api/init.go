@@ -1,9 +1,9 @@
 package api
 
 import (
-	"github.com/duoyun/zhujian/app/info"
-	"github.com/duoyun/zhujian/app/service"
-//		. "github.com/duoyun/zhujian/app/lea"
+	"github.com/nosqldb/zhujian/app/info"
+	"github.com/nosqldb/zhujian/app/service"
+//		. "github.com/nosqldb/zhujian/app/lea"
 	"github.com/revel/revel"
 	"strings"
 )

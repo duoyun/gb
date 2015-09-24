@@ -3,9 +3,9 @@ package controllers
 import (
 	"github.com/revel/revel"
 //	"encoding/json"
-	"github.com/duoyun/zhujian/app/info"
+	"github.com/nosqldb/zhujian/app/info"
 	"gopkg.in/mgo.v2/bson"
-//	. "github.com/duoyun/zhujian/app/lea"
+//	. "github.com/nosqldb/zhujian/app/lea"
 //	"io/ioutil"
 )
 

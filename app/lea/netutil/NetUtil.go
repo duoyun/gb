@@ -6,7 +6,7 @@ import (
 	"net"
 	"net/http"
 	"io/ioutil"
-	. "github.com/duoyun/zhujian/app/lea"
+	. "github.com/nosqldb/zhujian/app/lea"
 )
 
 // net的util

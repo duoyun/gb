@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"strconv"
 	"gopkg.in/mgo.v2"
-	"github.com/duoyun/zhujian/app/db"
+	"github.com/nosqldb/zhujian/app/db"
 	"gopkg.in/mgo.v2/bson"
 )
 

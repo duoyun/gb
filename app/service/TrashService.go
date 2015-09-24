@@ -2,8 +2,8 @@ package service
 
 import (
 	"gopkg.in/mgo.v2/bson"
-	"github.com/duoyun/zhujian/app/db"
-	"github.com/duoyun/zhujian/app/info"
+	"github.com/nosqldb/zhujian/app/db"
+	"github.com/nosqldb/zhujian/app/info"
 )
 
 // 回收站

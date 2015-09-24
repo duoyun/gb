@@ -2,8 +2,8 @@ package html2image
 
 /*
 import (
-	"github.com/duoyun/zhujian/app/lea"
-	"github.com/duoyun/zhujian/app/lea/netutil"
+	"github.com/nosqldb/zhujian/app/lea"
+	"github.com/nosqldb/zhujian/app/lea/netutil"
 	"bufio"
 	"code.google.com/p/draw2d/draw2d"
 //	"fmt"

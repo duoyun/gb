@@ -3,7 +3,7 @@ package db
 import (
 	"fmt"
 	"github.com/revel/revel"
-	. "github.com/duoyun/zhujian/app/lea"
+	. "github.com/nosqldb/zhujian/app/lea"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"strings"

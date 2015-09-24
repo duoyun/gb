@@ -4,8 +4,8 @@ import (
 	"github.com/revel/revel"
 //	"encoding/json"
 //	"gopkg.in/mgo.v2/bson"
-//	. "github.com/duoyun/zhujian/app/lea"
-	"github.com/duoyun/zhujian/app/info"
+//	. "github.com/nosqldb/zhujian/app/lea"
+	"github.com/nosqldb/zhujian/app/info"
 //	"os/exec"
 )
 

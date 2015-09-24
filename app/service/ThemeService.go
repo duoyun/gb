@@ -2,10 +2,10 @@ package service
 
 import (
 	"github.com/revel/revel"
-	"github.com/duoyun/zhujian/app/info"
-	"github.com/duoyun/zhujian/app/db"
-	. "github.com/duoyun/zhujian/app/lea"
-	"github.com/duoyun/zhujian/app/lea/archive"
+	"github.com/nosqldb/zhujian/app/info"
+	"github.com/nosqldb/zhujian/app/db"
+	. "github.com/nosqldb/zhujian/app/lea"
+	"github.com/nosqldb/zhujian/app/lea/archive"
 	"gopkg.in/mgo.v2/bson"
 	"time"
 	"strings"

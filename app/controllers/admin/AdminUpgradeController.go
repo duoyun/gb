@@ -3,7 +3,7 @@ package admin
 import (
 	"github.com/revel/revel"
 //	"encoding/json"
-	"github.com/duoyun/zhujian/app/info"
+	"github.com/nosqldb/zhujian/app/info"
 //	"io/ioutil"
 )
 

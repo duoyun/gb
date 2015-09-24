@@ -1,10 +1,10 @@
 package api
 
 import (
-	"github.com/duoyun/zhujian/app/info"
+	"github.com/nosqldb/zhujian/app/info"
 	"github.com/revel/revel"
 	"gopkg.in/mgo.v2/bson"
-		. "github.com/duoyun/zhujian/app/lea"
+		. "github.com/nosqldb/zhujian/app/lea"
 	//	"io/ioutil"
 )
 

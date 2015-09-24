@@ -9,7 +9,7 @@ import (
 func main() {
 	// go run main.go
 	// 生成routes.go, main.go
-	revel.Init("", "github.com/duoyun/zhujian", "")
+	revel.Init("", "github.com/nosqldb/zhujian", "")
 	_, err := harness.Build() // ok, err
 	if err != nil {
 		panic(err)

@@ -10,8 +10,8 @@ import (
 
 // convert revel msg to js msg
 
-var msgBasePath = "/Users/life/Documents/Go/package2/src/github.com/duoyun/zhujian/messages/"
-var targetBasePath = "/Users/life/Documents/Go/package2/src/github.com/duoyun/zhujian/public/js/i18n/"
+var msgBasePath = "/Users/life/Documents/Go/package2/src/github.com/nosqldb/zhujian/messages/"
+var targetBasePath = "/Users/life/Documents/Go/package2/src/github.com/nosqldb/zhujian/public/js/i18n/"
 func parse(filename string) {
 	file, err := os.Open(msgBasePath + filename)
 	reader := bufio.NewReader(file)

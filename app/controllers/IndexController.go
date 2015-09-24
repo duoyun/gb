@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"github.com/revel/revel"
-	"github.com/duoyun/zhujian/app/info"
-//	. "github.com/duoyun/zhujian/app/lea"
+	"github.com/nosqldb/zhujian/app/info"
+//	. "github.com/nosqldb/zhujian/app/lea"
 )
 
 // 首页

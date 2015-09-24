@@ -2,7 +2,7 @@ package member
 
 import (
 	"github.com/revel/revel"
-	"github.com/duoyun/zhujian/app/info"
+	"github.com/nosqldb/zhujian/app/info"
 )
 
 // 分组管理
