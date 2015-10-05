@@ -4,7 +4,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 	"github.com/nosqldb/zhujian/app/db"
 	"github.com/nosqldb/zhujian/app/info"
-	. "github.com/nosqldb/zhujian/app/lea"
+	. "github.com/nosqldb/zhujian/app/crypto"
 )
 
 // 找回密码

@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	. "github.com/nosqldb/zhujian/app/lea"
+	. "github.com/nosqldb/zhujian/app/crypto"
 	"strconv"
 	"strings"
 )
@@ -17,8 +18,7 @@ import (
 type AuthService struct {
 }
 
-// 使用bcrypt认证或者Md5认证
-// Use bcrypt (Md5 depreciated)
+// Use bcrypt
 func (this *AuthService) Login(emailOrUsername, pwd string) (info.User, error) {
 	emailOrUsername = strings.Trim(emailOrUsername, " ")
 	//	pwd = strings.Trim(pwd, " ")

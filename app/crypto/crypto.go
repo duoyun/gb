@@ -1,5 +1,5 @@
 // contains two cryptographic functions for both storing and comparing passwords.
-package lea
+package crypto
 
 import (
 	"golang.org/x/crypto/bcrypt"
@@ -23,4 +23,20 @@ func CompareHash(digest []byte, password string) bool {
 		return true
 	}
 	return false
+}
+
+// compare password
+// rawPwd raw password, dbPwd in database
+func ComparePwd(rawPwd, dbPwd string) bool {	
+	hex := []byte(dbPwd)
+	return CompareHash(hex, rawPwd)
+}
+
+// generate password hash
+func GenPwd(rawPwd string) string {
+	digest, err := GenerateHash(rawPwd)
+	if err != nil {
+		return ""
+	}
+	return string(digest)
 }

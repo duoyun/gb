@@ -4,6 +4,7 @@ import (
 	"github.com/nosqldb/zhujian/app/info"
 	"github.com/nosqldb/zhujian/app/db"
 	. "github.com/nosqldb/zhujian/app/lea"
+	. "github.com/nosqldb/zhujian/app/crypto"
 	"gopkg.in/mgo.v2/bson"
 	"time"
 	"strings"
@@ -396,7 +397,7 @@ func (this *UserService) ThirdAddUser(userId, email, pwd string) (ok bool, msg s
 		return
 	}
 	
-	ok = db.UpdateByQMap(db.Users, bson.M{"_id": bson.ObjectIdHex(userId)}, bson.M{"Email": email, "Pwd": Md5(pwd)})
+	ok = db.UpdateByQMap(db.Users, bson.M{"_id": bson.ObjectIdHex(userId)}, bson.M{"Email": email, "Pwd": GenPwd(pwd)})
 	return
 }
 
