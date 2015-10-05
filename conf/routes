@@ -27,7 +27,6 @@ POST	/findPasswordUpdate							Auth.FindPasswordUpdate
 # note
 * /note/listNotes Note.ListNotes
 * /note/listTrashNotes Note.ListTrashNotes
-* /note/getNoteAndContent Note.GetNoteAndContent
 * /note/getNoteContent Note.GetNoteContent
 * /note/updateNoteOrContent Note.UpdateNoteOrContent
 * /note/deleteNote Note.DeleteNote

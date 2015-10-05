@@ -14,6 +14,9 @@ type Note struct {
 	NotebookId    bson.ObjectId `bson:"NotebookId"`
 	Title         string        `Title` // 标题
 	Desc          string        `Desc`  // 描述, 非html
+	Abstract string `Abstract` // 摘要, 有html标签, 比content短, 在博客展示需要, 不放在notes表中
+	Content  string `Content`
+	
 
 	ImgSrc string   `ImgSrc` // 图片, 第一张缩略图地址
 	Tags   []string `Tags,omitempty`
@@ -43,27 +46,6 @@ type Note struct {
 	Usn int `Usn` // UpdateSequenceNum 
 
 	IsDeleted bool `IsDeleted` // 删除位
-}
-
-// 内容
-type NoteContent struct {
-	NoteId bson.ObjectId `bson:"_id,omitempty"`
-	UserId bson.ObjectId `bson:"UserId"`
-
-	IsBlog bool `IsBlog,omitempty` // 为了搜索博客
-
-	Content  string `Content`
-	Abstract string `Abstract` // 摘要, 有html标签, 比content短, 在博客展示需要, 不放在notes表中
-
-	CreatedTime   time.Time     `CreatedTime`
-	UpdatedTime   time.Time     `UpdatedTime`
-	UpdatedUserId bson.ObjectId `bson:"UpdatedUserId"` // 如果共享了, 并可写, 那么可能是其它他修改了
-}
-
-// 基本信息和内容在一起
-type NoteAndContent struct {
-	Note
-	NoteContent
 }
 
 // 历史记录

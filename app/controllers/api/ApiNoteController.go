@@ -136,17 +136,6 @@ func (c ApiNote) GetNote(noteId string) revel.Result {
 	return c.RenderJson(apiNotes[0])
 }
 
-// 得到note和内容
-// [OK]
-func (c ApiNote) GetNoteAndContent(noteId string) revel.Result {
-	noteAndContent := noteService.GetNoteAndContent(noteId, c.getUserId())
-	
-	apiNotes := noteService.ToApiNotes([]info.Note{noteAndContent.Note})
-	apiNote := apiNotes[0]
-	apiNote.Content = noteAndContent.Content
-	return c.RenderJson(apiNote)
-}
-
 // 处理笔记内容数据 http://leanote.com/file/outputImage -> https://leanote.com/api/file/getImage
 // 图片, 附件都替换
 func (c ApiNote) fixContent(content string) string {
@@ -325,7 +314,7 @@ func (c ApiNote) AddNote(noteOrContent info.ApiNote) revel.Result {
 		IsBlog:     noteOrContent.IsBlog,
 		AttachNum:  attachNum,
 	}
-	noteContent := info.NoteContent{NoteId: note.NoteId,
+	noteContent := info.Note{NoteId: note.NoteId,
 		UserId:   userId,
 		IsBlog:   note.IsBlog,
 		Content:  noteOrContent.Content,

@@ -209,15 +209,6 @@ Method: GET
 成功: [type.Note] 数组, 笔记不包含Abstract和Content
 ```
 
-### /note/getNoteAndContent 获得笔记与内容
-```
-参数: noteId
-Method: GET
-返回: 
-错误: {Ok: false, Msg: ""}
-成功: type.Note
-```
-
 ### /note/getNoteContent 获得笔记内容
 ```
 参数: noteId

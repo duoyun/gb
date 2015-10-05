@@ -41,7 +41,7 @@ func (c Note) Index(noteId string) revel.Result {
 	
 	// 还需要按时间排序(DESC)得到notes
 	notes := []info.Note{}
-	noteContent := info.NoteContent{}
+	noteContent := info.Note{}
 	
 	if len(notebooks) > 0 {
 		// noteId是否存在
@@ -52,7 +52,7 @@ func (c Note) Index(noteId string) revel.Result {
 			
 			if note.NoteId != "" {
 				var noteOwner = note.UserId.Hex()
-				noteContent = noteService.GetNoteContent(noteId, noteOwner)
+				noteContent = noteService.GetNote(noteId, noteOwner)
 				
 				hasRightNoteId = true
 				c.RenderArgs["curNoteId"] = noteId
@@ -102,7 +102,7 @@ func (c Note) Index(noteId string) revel.Result {
 		if !hasRightNoteId {
 			_, notes = noteService.ListUserNotes(c.GetUserId(), "", false, c.GetPage(), 50, defaultSortField, false, false);
 			if len(notes) > 0 {
-				noteContent = noteService.GetNoteContent(notes[0].NoteId.Hex(), userId)
+				noteContent = noteService.GetNote(notes[0].NoteId.Hex(), userId)
 				c.RenderArgs["curNoteId"] = notes[0].NoteId.Hex()
 			}
 		}
@@ -148,14 +148,9 @@ func (c Note) ListTrashNotes() revel.Result {
 	return c.RenderJson(notes)
 }
 
-// 得到note和内容
-func (c Note) GetNoteAndContent(noteId string) revel.Result {
-	return c.RenderJson(noteService.GetNoteAndContent(noteId, c.GetUserId()))
-}
-
 // 得到内容
 func (c Note) GetNoteContent(noteId string) revel.Result {
-	noteContent := noteService.GetNoteContent(noteId, c.GetUserId())
+	noteContent := noteService.GetNote(noteId, c.GetUserId())
 	return c.RenderJson(noteContent)
 }
 
@@ -196,7 +191,7 @@ func (c Note) UpdateNoteOrContent(noteOrContent NoteOrContent) revel.Result {
 			ImgSrc: noteOrContent.ImgSrc,
 			IsBlog: noteOrContent.IsBlog,
 		};
-		noteContent := info.NoteContent{NoteId: note.NoteId, 
+		noteContent := info.Note{NoteId: note.NoteId, 
 			UserId: userId, 
 			IsBlog: note.IsBlog,
 			Content: noteOrContent.Content, 

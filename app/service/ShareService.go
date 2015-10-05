@@ -464,8 +464,8 @@ func (this *ShareService) HasSharedNotebook(noteId, myUserId, sharedUserId strin
 
 // 得到共享的笔记内容
 // 并返回笔记的权限!!!
-func (this *ShareService) GetShareNoteContent(noteId, myUserId, sharedUserId string) (noteContent info.NoteContent) {
-	noteContent = info.NoteContent{}
+func (this *ShareService) GetShareNoteContent(noteId, myUserId, sharedUserId string) (noteContent info.Note) {
+	noteContent = info.Note{}
 	// 是否单独共享了该notebook
 	// 或者, 其notebook共享了我
 //	Log(this.HasSharedNote(noteId, myUserId))
@@ -473,7 +473,7 @@ func (this *ShareService) GetShareNoteContent(noteId, myUserId, sharedUserId str
 	Log(this.HasReadPerm(sharedUserId, myUserId, noteId))
 	if this.HasReadPerm(sharedUserId, myUserId, noteId) {
 //	if this.HasSharedNote(noteId, myUserId) || this.HasSharedNotebook(noteId, myUserId, sharedUserId) {
-		db.Get(db.NoteContents, noteId, &noteContent)
+		db.Get(db.Notes, noteId, &noteContent)
 	} else {
 	}
 	return

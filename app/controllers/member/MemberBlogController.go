@@ -98,8 +98,8 @@ func (c MemberBlog) UpdateBlogUrlTitle(noteId, urlTitle string) revel.Result {
 // 修改笔记的urlTitle
 func (c MemberBlog) UpdateBlogAbstract(noteId string) revel.Result {
 	c.RenderArgs["title"] = "Update Post Abstract"
-	note := noteService.GetNoteAndContent(noteId, c.GetUserId())
-	if !note.Note.IsBlog {
+	note := noteService.GetNote(noteId, c.GetUserId())
+	if !note.IsBlog {
 		return c.E404()
 	}
 	c.RenderArgs["note"] = note

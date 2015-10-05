@@ -97,8 +97,8 @@ func (this *BlogService) ListUserBlogs(userId, notebookId string, page, pageSize
 
 	// 直接得到noteContents表的abstract
 	// 这里可能是乱序的
-	noteContents := noteService.ListNoteAbstractsByNoteIds(noteIds) // 返回[info.NoteContent]
-	noteContentsMap := make(map[bson.ObjectId]info.NoteContent, len(noteContents))
+	noteContents := noteService.ListNoteAbstractsByNoteIds(noteIds) // 返回[info.Note]
+	noteContentsMap := make(map[bson.ObjectId]info.Note, len(noteContents))
 	for _, noteContent := range noteContents {
 		noteContentsMap[noteContent.NoteId] = noteContent
 	}
@@ -138,8 +138,8 @@ func (this *BlogService) ListBlogs(notebookId string, page, pageSize int, sortFi
 
 	// 直接得到noteContents表的abstract
 	// 这里可能是乱序的
-	noteContents := noteService.ListNoteAbstractsByNoteIds(noteIds) // 返回[info.NoteContent]
-	noteContentsMap := make(map[bson.ObjectId]info.NoteContent, len(noteContents))
+	noteContents := noteService.ListNoteAbstractsByNoteIds(noteIds) // 返回[info.Note]
+	noteContentsMap := make(map[bson.ObjectId]info.Note, len(noteContents))
 	for _, noteContent := range noteContents {
 		noteContentsMap[noteContent.NoteId] = noteContent
 	}
@@ -364,8 +364,8 @@ func (this *BlogService) notes2BlogItems(notes []info.Note) []info.BlogItem {
 
 	// 直接得到noteContents表的abstract
 	// 这里可能是乱序的
-	noteContents := noteService.ListNoteContentByNoteIds(noteIds) // 返回[info.NoteContent]
-	noteContentsMap := make(map[bson.ObjectId]info.NoteContent, len(noteContents))
+	noteContents := noteService.ListNoteContentByNoteIds(noteIds) // 返回[info.Note]
+	noteContentsMap := make(map[bson.ObjectId]info.Note, len(noteContents))
 	for _, noteContent := range noteContents {
 		noteContentsMap[noteContent.NoteId] = noteContent
 	}
@@ -516,8 +516,8 @@ func (this *BlogService) ListAllBlogs(userId, tag string, keywords string, isRec
 	// 直接得到noteContents表的abstract
 	// 这里可能是乱序的
 	/*
-		noteContents := noteService.ListNoteAbstractsByNoteIds(noteIds) // 返回[info.NoteContent]
-		noteContentsMap := make(map[bson.ObjectId]info.NoteContent, len(noteContents))
+		noteContents := noteService.ListNoteAbstractsByNoteIds(noteIds) // 返回[info.Note]
+		noteContentsMap := make(map[bson.ObjectId]info.Note, len(noteContents))
 		for _, noteContent := range noteContents {
 			noteContentsMap[noteContent.NoteId] = noteContent
 		}
